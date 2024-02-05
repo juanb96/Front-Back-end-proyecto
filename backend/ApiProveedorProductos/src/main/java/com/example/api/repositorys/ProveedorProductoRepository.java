@@ -1,0 +1,9 @@
+package com.example.api.repositorys;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.api.models.ProveedorProducto;
+
+public interface ProveedorProductoRepository extends JpaRepository<ProveedorProducto, Long>{
+
+}

@@ -1,0 +1,20 @@
+
+mat-paginator{
+    font-size: 20px;
+  }
+  td{
+    font-size: 10px;
+  }
+  th{
+    color: #bd3232;
+    font-size: 15px;
+  }
+  
+  .custom-red-button {
+    background-color: rgb(212, 30, 30) !important;
+    color: rgb(255, 255, 255) !important;
+    font-size: 20px;
+    
+  }
+  
+  

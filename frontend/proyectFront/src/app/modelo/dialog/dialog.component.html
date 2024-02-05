@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>{{ titulo }} modelo</h2>
+<div mat-dialog-content class="category-select">
+    <mat-list-item>{{id}} {{ editData?.idModelo }}</mat-list-item>
+    <mat-divider style="padding-top: 4%;"></mat-divider>
+    <form [formGroup]="modeloForm" class="form-container">
+      <div class="form-fields-container">
+        <div class="form-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre del modelo</mat-label>
+            <input formControlName="nombreModelo" matInput placeholder="Nombre del modelo">
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field class="category-select">
+            <mat-label>Marca</mat-label>
+            <select matNativeControl formControlName="marca">
+              <option value="" selected></option>
+              <option *ngFor="let marca of marcas" [value]="marca.idMarca">
+                -{{ marca.nombreMarca }} ({{ marca.idMarca }})
+              </option>
+            </select>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+    
+
+  <div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+    <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarModelo()">{{ actionBtn }}</button>
+  </div>
+</div>

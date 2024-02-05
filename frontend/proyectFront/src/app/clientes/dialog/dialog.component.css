@@ -1,0 +1,9 @@
+.form-row {
+    display: flex;
+  }
+  
+  .form-field {
+    margin-right: 10px;
+    flex: 1;
+  }
+  

@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>{{ titulo }} Comentario</h2>
+<div mat-dialog-content class="category-select">
+    <mat-list-item>{{id}} {{ editData?.idComentario }}</mat-list-item>
+    <mat-divider style="padding-top: 4%;"></mat-divider>  
+  <form [formGroup]="comentarioForm" class="form-container">
+    <div class="form-fields-container">
+      <div class="form-field" *ngIf="!editData">
+        <mat-form-field class="category-select">
+          <mat-label>Escoja el producto</mat-label>
+          <select matNativeControl formControlName="producto">
+            <option value="" selected></option>
+            <option *ngFor="let producto of productos" [value]="producto.idProducto">
+              {{ producto.nombre }} ({{ producto.idProducto }})
+            </option>
+          </select>
+        </mat-form-field>
+      </div>
+      <div class="form-field" *ngIf="!editData">
+        <mat-form-field class="category-select">
+          <mat-label>Escoja el usuario</mat-label>
+          <select matNativeControl formControlName="usuario">
+            <option value="" selected></option>
+            <option *ngFor="let usuario of usuarios" [value]="usuario.idUsuario">
+              {{ usuario.nombreUsuario }} ({{ usuario.idUsuario }})
+            </option>
+          </select>
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-form-field class="category-select">
+          <input matInput formControlName="comentario" placeholder="Comentario" />
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-form-field class="category-select">
+          <input matInput [matDatepicker]="picker" formControlName="fechaDeComentario" placeholder="Fecha de Comentario" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+    <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarComentario()">{{ actionBtn }}</button>
+  </div>
+</div>

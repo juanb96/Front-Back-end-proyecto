@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>{{titulo}} Imagenes</h2>
+<div mat-dialog-content class="category-select">
+        <mat-list-item>{{id}} {{ editData?.idImagen }}</mat-list-item>
+        <mat-divider style="padding-top: 4%;"></mat-divider>
+    <form [formGroup]="imagenForm" class="form-container">
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>URL</mat-label>
+                <input formControlName="urlImagen" matInput placeholder="UrlImagen">
+            </mat-form-field>
+        </div>
+        <div class="form-field">
+            <mat-form-field class="category-select">
+              <mat-label>Escoja el producto</mat-label>
+              <select matNativeControl [disabled]="disableSelect.disabled" formControlName="producto">
+                <option value="" selected></option>
+                <option *ngFor="let producto of productos" [value]="producto.idProducto">
+                  -{{ producto.nombre }} ({{ producto.idProducto }})
+                </option>
+              </select>
+            </mat-form-field>
+          </div>          
+    </form>
+
+    <div mat-dialog-action [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+        <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarImagen()">{{actionBtn}}</button>
+    </div>
+</div>
+

@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>{{titulo}} proveedor y producto</h2>
+<div mat-dialog-content class="category-select">
+  <mat-divider style="padding-top: 3%;" ></mat-divider >
+    <mat-list-item >{{id}} {{ editData?.idProveedorProducto }}</mat-list-item>
+    <form [formGroup]="productoProveedorForm" class="form-container" style="padding-top: 2%;">
+      <div class="form-field inline-field">
+        <mat-form-field class="category-select" style="margin-right: 30px;">
+          <mat-label>Escoja el producto</mat-label>
+          <select matNativeControl [disabled]="disableSelect.disabled" formControlName="producto">
+            <option value="" selected></option>
+            <option *ngFor="let producto of productos" [value]="producto.idProducto">
+              {{ producto.nombre }} ({{ producto.id }})
+            </option>
+          </select>
+        </mat-form-field>
+        <mat-form-field class="category-select">
+          <mat-label>Escoja el proveedor</mat-label>
+          <select matNativeControl [disabled]="disableSelect.disabled" formControlName="proveedor">
+            <option value="" selected></option>
+            <option *ngFor="let proveedor of proveedores" [value]="proveedor.idProveedor">
+              -{{ proveedor.nombreProveedor }} ({{ proveedor.idProveedor }})
+            </option>
+          </select>
+        </mat-form-field>
+      </div>
+    </form>
+    
+    
+
+  <div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+    <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarProductoProveedor()">{{actionBtn}}</button>
+  </div>
+</div>

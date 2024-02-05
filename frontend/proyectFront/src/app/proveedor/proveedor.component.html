@@ -1,0 +1,67 @@
+
+<p></p>
+<div class="container" style="margin-left: 10px; padding: 10px; margin-left: 10%;">
+  <button mat-raised-button class="custom-red-button" (click)="openDialog()" style="height: 50px; margin-left: 36%;">Agregar Proveedor</button>
+  <div style="margin-top: 10px;">
+    <mat-form-field style="width: 20%;">
+      <mat-label>Filtrar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="escriba el proveedor" #input>
+    </mat-form-field>
+    <div class="mat-elevation-z8" style="margin-top: 5px; width: 90%;">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="idProveedor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let row" > {{row.idProveedor}} </td>
+        </ng-container>
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="nombreProveedor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE </th>
+          <td mat-cell *matCellDef="let row" class="nombre-cell"> {{row.nombreProveedor}} </td>
+        </ng-container>
+        <!-- Progress Column -->
+        <ng-container matColumnDef="correoElectronico">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> CORREO ELECTRONICO</th>
+          <td mat-cell *matCellDef="let row" class="nombre-cell"> {{row.correoElectronico}} </td>
+        </ng-container>
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="direccion">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> DIRECCION </th>
+          <td mat-cell *matCellDef="let row" class="nombre-cell"> {{row.direccion}} </td>
+        </ng-container>
+         <!-- Progress Column -->
+        <ng-container matColumnDef="numeroDeTelefono">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> NUMERO DE TELEFONO </th>
+          <td mat-cell *matCellDef="let row" class="nombre-cell"> {{row.numeroDeTelefono}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ACCIONES </th>
+          <td mat-cell *matCellDef="let row" class="acciones-cell"> 
+            <div class="acciones-buttons">
+              <button mat-icon-button (click)="editarProveedor(row)" color="primary">
+                <mat-icon>editar</mat-icon>             
+              </button>
+              <button (click)="eliminarProveedor(row.idProveedor)" mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>             
+              </button>
+            </div>
+          </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <br>
+          <td class="mat-cell" colspan="4">Agrega un Proveedor"{{input.value}}"</td>
+        </tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>      
+  </div>
+</div>

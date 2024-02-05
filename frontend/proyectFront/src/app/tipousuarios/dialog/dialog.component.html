@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{titulo}} Tipo Usuario</h2>
+<div mat-dialog-content class="category-select">
+    <mat-divider  style="padding-top: 5%;"></mat-divider>
+    <form [formGroup]="tipousuariosForm">
+        <mat-list-item > {{id}}{{ editData?.idTipoUsuario }}</mat-list-item>
+        <mat-form-field appearance="outline" style="padding-top: 5%;">
+            <mat-label >Nombre</mat-label>
+            <input formControlName="nombreTipoUsuario" matInput placeholder="Nombre Tipo Usuario">
+        </mat-form-field>       
+    </form>
+    <div mat-dialog-action [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+        
+        <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarTipoUsuario()">{{actionBtn}}</button>
+    </div>
+</div>
+

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{ titulo }} marca</h2>
+
+<div mat-dialog-content class="category-select">
+
+    <mat-list-item>{{id}} {{ editData?.idMarca }}</mat-list-item>
+    <mat-divider style="padding-top: 4%;"></mat-divider>
+  <form [formGroup]="marcaForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input formControlName="nombreMarca" matInput placeholder="Nombre de la Marca">
+    </mat-form-field>
+  </form>
+  <div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+    <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarMarca()">{{ actionBtn }}</button>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+    <h2 mat-dialog-title>{{titulo}} categoria</h2>
+    <P></P>
+    <div mat-dialog-content class="category-select">
+        <form [formGroup]="categoriaForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="nombreCategoria" matInput placeholder="Nombre">
+            </mat-form-field>            
+        </form>
+        <div mat-dialog-action [align]="'end'">
+            <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+            
+            <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarCategoria()">{{actionBtn}}</button>
+        </div>
+    </div>
+

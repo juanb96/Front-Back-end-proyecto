@@ -1,0 +1,85 @@
+<p></p>
+<div class="container" style="margin-left: 10px; padding: 10px; margin-left: 10%;">
+  <button mat-raised-button class="custom-red-button"  (click)="openDialog()" style="height: 50px; margin-left: 36%; font-size: 20px;">Agregar empleado</button>
+  <div style="margin-top: 10px;">
+    <mat-form-field style="width: 25%;">
+      <mat-label>Filtrar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Escriba el empleado, correo o número telefónico" #input>
+    </mat-form-field>
+    <div class="mat-elevation-z8" style="margin-top: 5px; width: 90%;">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+        </ng-container>
+
+        <!-- Nombre Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header >NOMBRE</th>
+          <td mat-cell *matCellDef="let row" class="nombre-cliente-cell">{{ row.nombre }}</td>
+        </ng-container>
+
+        <!-- Apellido Column -->
+        <ng-container matColumnDef="apellido">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>APELLIDO</th>
+          <td mat-cell *matCellDef="let row">{{ row.apellido }}</td>
+        </ng-container>
+
+        <!-- Fecha Nacimiento Column -->
+        <ng-container matColumnDef="fecha_nacimiento">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>FECHA NACIMIENTO</th>
+          <td mat-cell *matCellDef="let row">{{ row.fecha_nacimiento }}</td>
+        </ng-container>
+
+        <!-- Dirección Column -->
+        <ng-container matColumnDef="direccion">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>DIRECCIÓN</th>
+          <td mat-cell *matCellDef="let row">{{ row.direccion }}</td>
+        </ng-container>
+
+        <!-- Teléfono Column -->
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>TELÉFONO</th>
+          <td mat-cell *matCellDef="let row">{{ row.telefono }}</td>
+        </ng-container>
+
+        <!-- Correo Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>CORREO</th>
+          <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+        </ng-container>
+
+        <!-- Salario Column -->
+        <ng-container matColumnDef="salario">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>SALARIO</th>
+          <td mat-cell *matCellDef="let row">{{ row.salario }}</td>
+        </ng-container>
+
+        <!-- Acciones Column -->
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>ACCIONES</th>
+          <td mat-cell *matCellDef="let row" class="acciones-cell">
+            <div class="acciones-buttons">
+              <button mat-icon-button (click)="editarEmpleado(row)" color="primary">
+                <mat-icon>editar</mat-icon>
+              </button>
+              <button mat-icon-button (click)="eliminarEmpleado(row.id)" color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9">No se encontraron empleados "{{ input.value }}"</td>
+        </tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccionar página de empleados"></mat-paginator>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>{{ titulo }} departamento</h2>
+<div mat-dialog-content class="category-select">
+  <mat-divider style="padding-top: 3%;"></mat-divider>
+  <mat-list-item>{{ id }}</mat-list-item>
+  <form [formGroup]="empleadoDepartamentoForm" class="form-container" style="padding-top: 2%;">
+    <div class="form-field inline-field">
+      <mat-form-field class="category-select" style="margin-right: 30px;">
+        <mat-label>Escoja el empleado</mat-label>
+        <select matNativeControl formControlName="empleado">
+          <option value="" selected></option>
+          <option *ngFor="let empleado of empleados" [value]="empleado.id">
+            {{ empleado.nombre }} ({{ empleado.id }})
+          </option>
+        </select>
+      </mat-form-field>
+      <mat-form-field class="category-select">
+        <mat-label>Escoja el departamento</mat-label>
+        <select matNativeControl formControlName="departamento">
+          <option value="" selected></option>
+          <option *ngFor="let departamento of departamentos" [value]="departamento.id">
+            -{{ departamento.nombre }} ({{ departamento.id }})
+          </option>
+        </select>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+    <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="guardarEmpleadoDepartamento()">{{ actionBtn }}</button>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>{{ titulo }} Usuarios</h2>
+<div mat-dialog-content class="category-select"  >
+  <mat-divider ></mat-divider >
+  <form [formGroup]="usuarioForm" class="form-container" >
+      <mat-list-item style="padding-bottom: 2%;padding-top: 2%;"> {{id}}{{ editData?.idUsuario }}</mat-list-item>
+    <div class="form-fields-container" >
+      <div class="form-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre de usuario</mat-label>
+          <input formControlName="nombreUsuario" matInput placeholder="Nombre de usuario">
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input formControlName="contrasena" matInput type="password" placeholder="Contraseña">
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Correo electrónico</mat-label>
+          <input formControlName="correoElectronico" matInput placeholder="Correo electrónico">
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-form-field class="category-select">
+          <mat-label>Tipo de usuario</mat-label>
+          <select matNativeControl formControlName="tipoUsuario">
+            <option value="" selected></option>
+            <option *ngFor="let tipoUsuario of tiposUsuarios" [value]="tipoUsuario.idTipoUsuario">
+              -{{ tipoUsuario.nombreTipoUsuario }} ({{tipoUsuario.idTipoUsuario}})
+            </option>
+          </select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
+  <div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+    <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarUsuario()">{{ actionBtn }}</button>
+  </div>
+</div>

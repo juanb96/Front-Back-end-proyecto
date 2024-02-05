@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>{{ titulo }} Cliente</h2>
+
+<div mat-dialog-content class="category-select">
+    <mat-list-item>{{id}} {{ editData?.idCliente }}</mat-list-item>
+    <mat-divider style="padding-top: 4%;" ></mat-divider>
+  <form [formGroup]="clienteForm">
+    <div class="form-row">
+      <div class="form-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input formControlName="nombreCliente" matInput placeholder="Nombre">
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Dirección</mat-label>
+          <input formControlName="direccion" matInput placeholder="Dirección">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Correo Electrónico</mat-label>
+          <input formControlName="correoElectronico" matInput placeholder="Correo Electrónico">
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Número de Teléfono</mat-label>
+          <input formControlName="numeroDeTelefono" matInput placeholder="Número de Teléfono">
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
+  <div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+    <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarCliente()">{{ actionBtn }}</button>
+  </div>
+</div>

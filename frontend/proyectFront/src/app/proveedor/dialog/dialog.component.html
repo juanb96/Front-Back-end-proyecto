@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>{{titulo}} Proveedores</h2>
+
+<div mat-dialog-content class="category-select">
+    <mat-divider style="padding-top: 5%;" ></mat-divider >
+    <form [formGroup]="proveedorForm" class="form-container">
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="nombreProveedor" matInput placeholder="Nombre">
+            </mat-form-field>
+        </div>
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Dirección</mat-label>
+                <input formControlName="direccion" matInput placeholder="Dirección">
+            </mat-form-field>
+        </div>
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Correo electrónico</mat-label>
+                <input formControlName="correoElectronico" matInput placeholder="Correo electrónico">
+            </mat-form-field>
+        </div>
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Número de teléfono</mat-label>
+                <input formControlName="numeroDeTelefono" matInput placeholder="Número de teléfono">
+            </mat-form-field>
+        </div>
+    </form>
+    <div mat-dialog-action [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+        <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarProveedor()">{{actionBtn}}</button>
+    </div>
+</div>

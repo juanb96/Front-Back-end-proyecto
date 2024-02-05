@@ -1,0 +1,18 @@
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  
+  
+  .form-fields-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  
+  
+  .form-field {
+    margin-right: 20px; /* Opcional: Añade un margen entre los elementos form-field */
+  }
+  

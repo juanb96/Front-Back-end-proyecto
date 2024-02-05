@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>{{titulo}} Productos</h2>
+<div mat-dialog-content class="category-select">
+ 
+      <mat-list-item>{{id}} {{ editData?.idProducto }}</mat-list-item>
+      <mat-divider style="padding-top: 4%;"></mat-divider>
+  
+    <form [formGroup]="productoForm" class="form-container">
+      <div class="form-fields-container">
+        <div class="form-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="nombre" matInput placeholder="Nombre">
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Descripcion</mat-label>
+            <input formControlName="descripcion" matInput placeholder="Descripcion">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-fields-container">
+        <div class="form-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Precio Unitario</mat-label>
+            <input formControlName="precioUnitario" matInput placeholder="Precio Unitario">
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Stock</mat-label>
+            <input formControlName="stock" matInput placeholder="Stock">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-field">
+        <mat-form-field class="category-select">
+          <mat-label>Escoja la categoria</mat-label>
+          <select matNativeControl [disabled]="disableSelect.disabled" formControlName="categoria">
+            <option value="" selected></option>
+            <option *ngFor="let categoria of categorias" [value]="categoria.idCategoria">
+              -{{ categoria.nombreCategoria }} ({{ categoria.idCategoria }})
+            </option>
+          </select>
+        </mat-form-field>
+      </div>
+    </form>
+    <div mat-dialog-action [align]="'end'">
+      <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+      <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarProducto()">{{actionBtn}}</button>
+    </div>
+  </div>
+  

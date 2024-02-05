@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>{{ titulo }} Carrito de Compras</h2>
+<P></P>
+<div mat-dialog-content class="category-select">
+  <mat-list *ngIf="!editData">
+    <mat-list-item>ID: {{ editData?.idCarrito }}</mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+  
+  <form [formGroup]="carritoForm" class="form-container">
+    <div class="form-fields-container">
+      <div class="form-field" *ngIf="!editData">
+        <mat-form-field class="category-select">
+          <mat-label>Usuario</mat-label>
+          <select matNativeControl formControlName="usuario">
+            <option value="" selected></option>
+            <option *ngFor="let usuario of usuarios" [value]="usuario.idUsuario">
+              {{ usuario.nombreUsuario }}
+            </option>
+          </select>
+        </mat-form-field>
+      </div>
+      <div class="form-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de Creación</mat-label>
+          <input formControlName="fechaDeCreacion" matInput type="date" placeholder="Fecha de Creación">
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
+  <div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+    <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarCarrito()">{{ actionBtn }}</button>
+  </div>
+</div>

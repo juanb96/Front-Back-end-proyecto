@@ -1,0 +1,51 @@
+<p></p>
+<div class="container" style="margin-left: 10px; padding: 10px; margin-left: 10%;">
+  <button mat-raised-button class="custom-red-button" (click)="openDialog()" style="height: 50px; margin-left: 36%;">Agregar Departamento</button>
+  <div style="margin-top: 10px;">
+    <mat-form-field style="width: 20%;">
+      <mat-label>Filtrar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Escriba el departamento" #input>
+    </mat-form-field>
+    <div class="mat-elevation-z8" style="margin-top: 5px; width: 90%;">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+    
+        <!-- Nombre Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE </th>
+          <td mat-cell *matCellDef="let row" class="nombre-cell"> {{row.nombre}} </td>
+        </ng-container>
+    
+        <!-- Acciones Column -->
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ACCIONES </th>
+          <td mat-cell *matCellDef="let row" class="acciones-cell"> 
+            <div class="acciones-buttons">
+              <button mat-icon-button (click)="editarDepartamento(row)" color="primary">
+                <mat-icon>editar</mat-icon>             
+              </button>
+              <button (click)="eliminarDepartamento(row.id)" mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>             
+              </button>
+            </div>
+          </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <br>
+          <td class="mat-cell" colspan="3">No se encontraron departamentos que coincidan con "{{input.value}}"</td>
+        </tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>      
+  </div>
+</div>

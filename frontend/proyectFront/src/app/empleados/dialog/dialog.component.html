@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>{{ titulo }} Empleado</h2>
+
+<div mat-dialog-content class="category-select">
+    <mat-list-item>{{id}} {{ editData?.id }}</mat-list-item>
+    <mat-divider style="padding-top: 4%;"></mat-divider>
+    <form [formGroup]="empleadoForm">
+        <div class="form-row">
+            <div class="form-field">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input formControlName="nombre" matInput placeholder="Nombre">
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <mat-form-field appearance="outline">
+                    <mat-label>Apellido</mat-label>
+                    <input formControlName="apellido" matInput placeholder="Apellido">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-field">
+                <mat-form-field appearance="outline">
+                  <mat-label>Fecha de Nacimiento</mat-label>
+                  <input formControlName="fecha_nacimiento" matInput type="date" placeholder="Fecha de nacimiento">
+                </mat-form-field>
+              </div>
+
+            <div class="form-field">
+                <mat-form-field appearance="outline">
+                    <mat-label>Dirección</mat-label>
+                    <input formControlName="direccion" matInput placeholder="Dirección">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-field">
+                <mat-form-field appearance="outline">
+                    <mat-label>Teléfono</mat-label>
+                    <input formControlName="telefono" matInput placeholder="Teléfono">
+                </mat-form-field>
+            </div>
+
+            <div class="form-field">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" matInput placeholder="Email">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="form-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Salario</mat-label>
+                <input formControlName="salario" matInput placeholder="Salario">
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div mat-dialog-action [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+        <button style="margin-left: 9%;" mat-raised-button color="primary" (click)="agregarEmpleado()">{{ actionBtn }}</button>
+    </div>
+</div>
